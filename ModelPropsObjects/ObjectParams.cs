@@ -1,10 +1,11 @@
 using System.Numerics;
+using Factories.HashValues;
 
-namespace Factories.InstanceIdModelPropsObjects
+namespace Factories.ModelPropsObjects
 {
-    public struct PropsObjectParams<TModel>
+    public struct ObjectParams
     {
-        public TModel Model;
+        public string Hash;
         public HashValue<int>[] IntHashValues;
         public Vector3 Position;
         public HashValue<string>[] StringHashValues;

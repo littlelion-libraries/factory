@@ -1,11 +1,10 @@
-namespace Factories.InstanceIdModelPropsObjects
+namespace Factories.ModelPropsObjects
 {
-    public class InstanceIdModelPropsObjectFactory<TObject, TModel, TProps> : IParamsFactory<TObject, ObjectParams>
-        where TObject : IInstanceIdModelPropsObject<TModel, TProps>, new()
+    public class ModelPropsObjectFactory<TObject, TModel, TProps> : IParamsFactory<TObject, ObjectParams>
+        where TObject : IModelPropsObject<TModel, TProps>, new()
     {
         public class Props
         {
-            public InstanceId InstanceId;
             public IHashFactory<TModel> ModelFactory;
             public IParamsFactory<TProps, PropsObjectParams<TModel>> PropsFactory;
         }
@@ -17,7 +16,6 @@ namespace Factories.InstanceIdModelPropsObjects
             var model = _props.ModelFactory.Create(parameters.Hash);
             return new TObject
             {
-                InstanceId = _props.InstanceId.Next(),
                 Model = model,
                 Props = _props.PropsFactory.Create(new PropsObjectParams<TModel>()
                 {
