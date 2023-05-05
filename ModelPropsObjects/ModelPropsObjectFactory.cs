@@ -11,6 +11,11 @@ namespace Factories.ModelPropsObjects
 
         private Props _props;
 
+        public Props Properties
+        {
+            set => _props = value;
+        }
+
         public TObject Create(ObjectParams parameters)
         {
             var model = _props.ModelFactory.Create(parameters.Hash);
