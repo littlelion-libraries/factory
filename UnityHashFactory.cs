@@ -19,9 +19,9 @@ namespace Factories
             set => _objects = value;
         }
 
-        public T Create(string parameters)
+        public T Create(string material)
         {
-            return Object.Instantiate(_objects[parameters]) is T t ? t : throw new InvalidCastException();
+            return Object.Instantiate(_objects[material]) is T t ? t : throw new InvalidCastException();
         }
     }
 }

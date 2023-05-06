@@ -1,4 +1,4 @@
-namespace Factories
+namespace Factories.InstanceIdObjectDecorators
 {
     public interface IInstanceIdObject
     {

@@ -2,15 +2,15 @@ using System;
 
 namespace Factories
 {
-    public class TransformFactory<TDes, TDesParams, TSrc, TSrcParams> : IParamsFactory<TDes, TDesParams>
-        where TSrc : TDes
+    public class TransformFactory<TDesMaterial, TDesProduct, TSrcMaterial, TSrcProduct> :
+        IFactory<TDesMaterial, TDesProduct> where TSrcProduct : TDesProduct
     {
-        public IParamsFactory<TSrc, TSrcParams> Src { get; set; }
-        public Func<TDesParams, TSrcParams> Transform { get; set; }
+        public IFactory<TSrcMaterial, TSrcProduct> Src { private get; set; }
+        public Func<TDesMaterial, TSrcMaterial> Transform { private get; set; }
 
-        public TDes Create(TDesParams parameters)
+        public TDesProduct Create(TDesMaterial material)
         {
-            return Src.Create(Transform(parameters));
+            return Src.Create(Transform(material));
         }
     }
 }
