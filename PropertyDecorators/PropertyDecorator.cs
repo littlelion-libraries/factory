@@ -1,15 +1,20 @@
 using Factories.Decorators;
+using Factories.FactoryDecorators;
 
-namespace Factories.FactoryDecorators
+namespace Factories.PropertyDecorators
 {
-    public class PropertyDecorator<TMaterial, TProperty, TProduct> : IDecorator<TProduct, TMaterial>
-        where TProduct : IPropertyObject<TProperty>
+    public class PropertyDecorator<TObject, TParameter, TProperty> : IDecorator<TObject, TParameter>
+        where TObject : IPropertyObject<TProperty>
     {
-        public IFactory<TMaterial, TProperty> PropertyFactory { private get; set; }
+        public IFactory<PropertyFactoryMaterial<TObject, TParameter>, TProperty> PropertyFactory { private get; set; }
 
-        public void Decorate(TProduct obj, TMaterial parameters)
+        public void Decorate(TObject obj, TParameter param)
         {
-            obj.Property = PropertyFactory.Create(parameters);
+            obj.Property = PropertyFactory.Create(new PropertyFactoryMaterial<TObject, TParameter>
+            {
+                Object = obj,
+                Parameter = param
+            });
         }
     }
 }
