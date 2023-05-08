@@ -4,11 +4,11 @@ namespace Factories.Decorators
     {
         public IDecorator<TObject, TParams>[] Decorators { private get; set; }
 
-        public void Decorate(TObject obj, TParams parameters)
+        public void Decorate(TObject obj, TParams param)
         {
             foreach (var decorator in Decorators)
             {
-                decorator.Decorate(obj, parameters);
+                decorator.Decorate(obj, param);
             }
         }
     }

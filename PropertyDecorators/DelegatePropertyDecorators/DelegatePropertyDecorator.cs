@@ -1,10 +1,11 @@
 using System;
 using System.Reflection;
 using Factories.Decorators;
+using Factories.PropertyDecorators;
 
 namespace Factories.DelegatePropertyDecorators
 {
-    public class DelegatePropertyDecorator<TObject, TParams, TProperty> : IDecorator<TObject, TParams>
+    public class DelegatePropertyDecorator<TObject, TParameter, TProperty> : IDecorator<TObject, TParameter>
     {
         private readonly object[] _args = new object[1];
         private MethodInfo _methodInfo;
@@ -18,14 +19,14 @@ namespace Factories.DelegatePropertyDecorators
             }
         }
 
-        public IFactory<PropertyFactoryMaterial<TObject, TParams>, TProperty> PropertyFactory { private get; set; }
+        public IFactory<PropertyFactoryMaterial<TObject, TParameter>, TProperty> PropertyFactory { private get; set; }
 
-        public void Decorate(TObject obj, TParams parameters)
+        public void Decorate(TObject obj, TParameter param)
         {
-            _args[0] = PropertyFactory.Create(new PropertyFactoryMaterial<TObject, TParams>
+            _args[0] = PropertyFactory.Create(new PropertyFactoryMaterial<TObject, TParameter>
             {
                 Object = obj,
-                Params = parameters
+                Parameter = param
             });
             _methodInfo.Invoke(obj, _args);
         }
