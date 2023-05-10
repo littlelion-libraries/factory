@@ -12,19 +12,4 @@ namespace Factories.Decorators
             Source.Decorate(Transform(obj), param);
         }
     }
-
-    public static class ObjectTransformDecorator<TObj>
-    {
-        public static ObjectTransformDecorator<TObj, TParam, TSrcObj> From<TSrcObj, TParam>(
-            IDecorator<TSrcObj, TParam> decorator,
-            Func<TObj, TSrcObj> func
-        )
-        {
-            return new ObjectTransformDecorator<TObj, TParam, TSrcObj>
-            {
-                Transform = func,
-                Source = decorator
-            };
-        }
-    }
 }

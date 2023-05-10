@@ -37,6 +37,19 @@ namespace Factories.Decorators
             };
         }
 
+        public static ParameterTransformDecorator<TDesParam, TObj, TSrcParam> SelectParameter<TDesParam, TObj,
+            TSrcParam>(
+            this IDecorator<TObj, TSrcParam> decorator,
+            Func<TDesParam, TSrcParam> transform
+        )
+        {
+            return new ParameterTransformDecorator<TDesParam, TObj, TSrcParam>
+            {
+                Source = decorator,
+                Transform = transform
+            };
+        }
+
         public static PropertyDecorator<TObject, TParameter, TProperty> SelectPropertyDecorator<TMaterial, TObject,
             TParameter, TProperty>(
             this IFactory<TMaterial, TProperty> factory,
