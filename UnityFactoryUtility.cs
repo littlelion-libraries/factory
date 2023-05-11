@@ -5,7 +5,7 @@ namespace Factories
 {
     public static class UnityFactoryUtility
     {
-        public static UnityHashFactory<T> SelectFactory<T>(IEnumerable<T> elements) where T : Object
+        public static UnityHashFactory<T> SelectFactory<T>(this IEnumerable<T> elements) where T : Object
         {
             return new UnityHashFactory<T>
             {
