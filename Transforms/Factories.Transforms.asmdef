@@ -1,0 +1,17 @@
+{
+    "name": "Factories.Transforms",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3dcd351fe583ae44fa6e611ea87b04c2",
+        "GUID:2a0bc8a019b72014e8984aa6f673648d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
