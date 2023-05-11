@@ -1,8 +1,8 @@
 using Transforms;
 
-namespace Factories
+namespace Factories.Transforms
 {
-    public struct TransformHashValueData
+    public struct TransformHashValuesData
     {
         public HashValuesData HashValues;
         public TransformData Transform;
