@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Factories
 {
@@ -35,6 +37,18 @@ namespace Factories
             {
                 Src = factory,
                 Transform = transform
+            };
+        }
+
+        public static DictionaryFactory<TKey, TMaterial, TProduct> SelectDictionaryFactory<TKey, TMaterial, TProduct>(
+            this IEnumerable<(TKey Key, IFactory<TMaterial, TProduct> Factory)> factories,
+            Func<TMaterial, TKey> keySelector
+        )
+        {
+            return new DictionaryFactory<TKey, TMaterial, TProduct>
+            {
+                Factories = factories.ToDictionary(it => it.Key, it => it.Factory),
+                KeySelector = keySelector
             };
         }
     }
