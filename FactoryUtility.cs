@@ -40,7 +40,7 @@ namespace Factories
             };
         }
 
-        public static DictionaryFactory<TKey, TMaterial, TProduct> SelectDictionaryFactory<TKey, TMaterial, TProduct>(
+        public static DictionaryFactory<TKey, TMaterial, TProduct> ToDictionaryFactory<TKey, TMaterial, TProduct>(
             this IEnumerable<(TKey Key, IFactory<TMaterial, TProduct> Factory)> factories,
             Func<TMaterial, TKey> keySelector
         )
